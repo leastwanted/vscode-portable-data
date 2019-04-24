@@ -1,5 +1,14 @@
 
 user-data/Backups/
 user-data/Cache/
+user-data/CachedData/
+user-data/CachedExtensions/
+user-data/GPUCache/
 user-data/logs/
 
+user-data/Cookies
+user-data/Cookies-journal
+
+user-data/machineid
+user-data/Network Persistent State
+user-data/storage.json
