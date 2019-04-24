@@ -1,0 +1,29 @@
+[2019-04-24 20:48:46.993] [sharedprocess] [info] main {"machineId":"109b34cb5ba656cd5319c70cf9d37c1d54e155b7e4abd8644680d08216787785"}
+[2019-04-24 20:48:47.042] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:48:47.066] [sharedprocess] [info] Scanned system extensions: 72
+[2019-04-24 20:48:47.086] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:48:47.087] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:48:47.116] [sharedprocess] [info] Scanned system extensions: 72
+[2019-04-24 20:48:47.118] [sharedprocess] [info] Scanned system extensions: 72
+[2019-04-24 20:48:48.733] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:48:55.563] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:49:10.182] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:49:10.185] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:49:10.186] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:49:10.189] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:49:10.229] [sharedprocess] [info] Scanned system extensions: 72
+[2019-04-24 20:49:10.232] [sharedprocess] [info] Scanned system extensions: 72
+[2019-04-24 20:49:10.236] [sharedprocess] [info] Scanned system extensions: 72
+[2019-04-24 20:49:22.318] [sharedprocess] [info] Installing extension: shd101wyy.markdown-preview-enhanced
+[2019-04-24 20:49:22.320] [sharedprocess] [info] Scanned user extensions: 0
+[2019-04-24 20:49:25.580] [sharedprocess] [info] Downloaded extension: shd101wyy.markdown-preview-enhanced C:\Users\duoyi\AppData\Local\Temp\d3ecafe4-71c5-4700-be6c-6bd0126c19c2
+[2019-04-24 20:49:27.017] [sharedprocess] [info] Starting to clean up unused language packs.
+[2019-04-24 20:49:36.696] [sharedprocess] [info] Extracted extension to C:\softwares\VSCode-win32-x64-1.33.1\data\extensions\.shd101wyy.markdown-preview-enhanced-0.3.13: shd101wyy.markdown-preview-enhanced
+[2019-04-24 20:49:36.703] [sharedprocess] [info] Renamed to C:\softwares\VSCode-win32-x64-1.33.1\data\extensions\shd101wyy.markdown-preview-enhanced-0.3.13
+[2019-04-24 20:49:36.708] [sharedprocess] [info] Installation completed. shd101wyy.markdown-preview-enhanced
+[2019-04-24 20:49:36.719] [sharedprocess] [info] Extensions installed successfully: shd101wyy.markdown-preview-enhanced
+[2019-04-24 20:50:20.097] [sharedprocess] [info] Scanned user extensions: 1
+[2019-04-24 20:50:20.098] [sharedprocess] [info] Scanned user extensions: 1
+[2019-04-24 20:50:20.124] [sharedprocess] [info] Scanned system extensions: 72
+[2019-04-24 20:50:20.128] [sharedprocess] [info] Scanned system extensions: 72
+[2019-04-24 20:50:22.374] [sharedprocess] [info] Scanned user extensions: 1

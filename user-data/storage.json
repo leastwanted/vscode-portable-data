@@ -1,0 +1,26 @@
+{
+    "telemetry.machineId": "109b34cb5ba656cd5319c70cf9d37c1d54e155b7e4abd8644680d08216787785",
+    "openedPathsList": {
+        "workspaces3": [
+            "file:///d%3A/projects/universe"
+        ],
+        "files2": []
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#1e1e1e",
+    "pickerWorkingDir": "D:\\projects",
+    "windowsState": {
+        "lastActiveWindow": {
+            "folder": "file:///d%3A/projects/universe",
+            "backupPath": "C:\\softwares\\VSCode-win32-x64-1.33.1\\data\\user-data\\Backups\\49a6fba62d1e336c2172fc0fb67fe02e",
+            "uiState": {
+                "mode": 0,
+                "x": -8,
+                "y": -8,
+                "width": 1936,
+                "height": 1176
+            }
+        },
+        "openedWindows": []
+    }
+}
