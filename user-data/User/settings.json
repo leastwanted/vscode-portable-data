@@ -1,4 +1,5 @@
 {
     "editor.renderWhitespace": "all",
-    "markdown-preview-enhanced.previewTheme": "atom-dark.css"
+    "markdown-preview-enhanced.previewTheme": "atom-dark.css",
+    "workbench.startupEditor": "newUntitledFile"
 }
