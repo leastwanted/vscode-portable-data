@@ -1,5 +1,7 @@
 {
     "editor.renderWhitespace": "all",
-    "markdown-preview-enhanced.previewTheme": "atom-dark.css",
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDelete": false,
+    "markdown-preview-enhanced.previewTheme": "solarized-light.css",
+    "markdown-preview-enhanced.phantomPath": "C:\\Softwares\\VSCode-win32-x64-1.33.1\\data\\bin\\phantomjs"
 }
