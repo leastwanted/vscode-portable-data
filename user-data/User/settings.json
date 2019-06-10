@@ -4,5 +4,8 @@
     "explorer.confirmDelete": false,
     "markdown-preview-enhanced.phantomPath": "C:\\Softwares\\VSCode-win32-x64-1.33.1\\data\\bin\\phantomjs",
     "markdown-preview-enhanced.previewTheme": "solarized-light.css",
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "breadcrumbs.enabled": true,
+    "git.enableSmartCommit": true
 }
