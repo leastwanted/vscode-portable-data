@@ -8,5 +8,6 @@
     "explorer.confirmDragAndDrop": false,
     "breadcrumbs.enabled": true,
     "git.enableSmartCommit": true,
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "path-autocomplete.triggerOutsideStrings": true
 }
