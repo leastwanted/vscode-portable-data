@@ -9,5 +9,9 @@
     "breadcrumbs.enabled": true,
     "git.enableSmartCommit": true,
     "window.zoomLevel": 0,
-    "path-autocomplete.triggerOutsideStrings": true
+    "path-autocomplete.triggerOutsideStrings": true,
+    "files.exclude": {
+        "*.pyc": true
+    },
+    "svn.enableProposedApi": "product"
 }
