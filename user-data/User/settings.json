@@ -1,17 +1,25 @@
 {
-    "editor.renderWhitespace": "all",
-    "workbench.startupEditor": "newUntitledFile",
-    "explorer.confirmDelete": false,
-    "markdown-preview-enhanced.phantomPath": "C:\\Softwares\\VSCode\\data\\bin\\phantomjs",
-    "markdown-preview-enhanced.previewTheme": "solarized-light.css",
     "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "all",
+    "editor.wordWrap": "on",
+
+    "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "breadcrumbs.enabled": true,
-    "git.enableSmartCommit": true,
-    "window.zoomLevel": 0,
-    "path-autocomplete.triggerOutsideStrings": true,
+
     "files.exclude": {
-        "*.pyc": true
+        "**/*.pyc": true
     },
+
+    "git.enableSmartCommit": true,
+
+    "window.zoomLevel": -1,
+    "workbench.startupEditor": "none",
+
+    // extensions
+    "markdown-preview-enhanced.phantomPath": "D:\\softwares\\VSCode\\data\\bin\\phantomjs",
+    "markdown-preview-enhanced.previewTheme": "solarized-light.css",
+
+    "path-autocomplete.triggerOutsideStrings": true,
+
     "svn.enableProposedApi": "product"
 }
