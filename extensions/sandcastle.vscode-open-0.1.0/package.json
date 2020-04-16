@@ -1,0 +1,76 @@
+{
+	"name": "vscode-open",
+	"displayName": "Open",
+	"description": "Opens the current file with the default for the OS",
+	"version": "0.1.0",
+	"icon": "open.png",
+	"publisher": "sandcastle",
+	"engines": {
+		"vscode": "^0.10.7"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sandcastle/vscode-open"
+	},
+	"keywords": [
+		"open",
+		"file",
+		"browser",
+		"display",
+		"vscode"
+	],
+	"homepage": "https://github.com/sandcastle/vscode-open",
+	"bugs": {
+		"url": "https://github.com/sandcastle/vscode-open/issues"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.open",
+				"title": "Open with default application"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "extension.open",
+					"group": "navigation"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "extension.open",
+				"key": "ctrl+alt+o",
+				"mac": "cmd+alt+o"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/.bin/tsc -p ./",
+		"compile": "node ./node_modules/.bin/tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"tslint": "tslint -c tslint.json src/extension.ts"
+	},
+	"devDependencies": {
+		"@types/node": "^7.0.0",
+		"@types/opn": "^3.0.28",
+		"typescript": "^2.1.5",
+		"vscode": "^1.0.3"
+	},
+	"dependencies": {
+		"opn": "^4.0.2"
+	},
+	"__metadata": {
+		"id": "84d4a562-c19b-4b30-b8f8-8e02eaf02fa2",
+		"publisherId": "24afb8a8-04c6-4064-a780-77c50611ee49",
+		"publisherDisplayName": "sandcastle"
+	}
+}

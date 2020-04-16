@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>rzls</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.SourceTextExtensions.GetEncompassingTextChangeRange(Microsoft.CodeAnalysis.Text.SourceText,Microsoft.CodeAnalysis.Text.SourceText)">
+            <summary>
+            Gets the minimal range of text that changed between the two versions.
+            </summary>
+        </member>
+    </members>
+</doc>
