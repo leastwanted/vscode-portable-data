@@ -6,6 +6,7 @@ user-data/CachedExtensions/
 user-data/Code\ Cache/
 user-data/GPUCache/
 user-data/logs/
+user-data/Session Storage/
 
 user-data/Cookies
 user-data/Cookies-journal
@@ -18,3 +19,4 @@ user-data/storage.json
 user-data/rapid_render.json
 
 __pycache__
+user-data/TransportSecurity
