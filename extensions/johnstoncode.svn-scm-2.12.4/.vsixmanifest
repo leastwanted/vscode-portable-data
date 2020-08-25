@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Language="en-US" Id="svn-scm" Version="2.11.6" Publisher="johnstoncode"/>
+    <Identity Language="en-US" Id="svn-scm" Version="2.12.4" Publisher="johnstoncode"/>
     <DisplayName>SVN</DisplayName>
     <Description xml:space="preserve">Integrated Subversion source control</Description>
     <Tags>multi-root ready,scm,svn,subversion</Tags>

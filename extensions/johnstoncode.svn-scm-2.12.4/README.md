@@ -7,8 +7,6 @@
 [![Build Status](https://img.shields.io/github/workflow/status/JohnstonCode/svn-scm/build.svg)](https://github.com/JohnstonCode/svn-scm/actions)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-[![Dependencies Status](https://david-dm.org/JohnstonCode/svn-scm/status.svg)](https://david-dm.org/JohnstonCode/svn-scm)
-[![DevDependencies Status](https://david-dm.org/JohnstonCode/svn-scm/dev-status.svg)](https://david-dm.org/JohnstonCode/svn-scm?type=dev)
 [![Dependabot badge](https://badgen.net/dependabot/JohnstonCode/svn-scm/?icon=dependabot)](https://dependabot.com/)
 
 [![Known Vulnerabilities](https://snyk.io/test/github/JohnstonCode/svn-scm/badge.svg)](https://snyk.io/test/github/JohnstonCode/svn-scm)
@@ -158,6 +156,9 @@ Here are all of the extension settings with their default values. To change any 
 
   // Path to the svn executable
   "svn.path": null,
+
+  // Only show previous commits for a given user. Requires svn >= 1.8
+  "svn.previousCommitsUser": null,
 
   // Refresh remote changes on refresh command
   "svn.refresh.remoteChanges": null,

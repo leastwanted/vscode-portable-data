@@ -1,3 +1,45 @@
+## [2.12.4](https://github.com/JohnstonCode/svn-scm/compare/v2.12.3...v2.12.4) (2020-08-25)
+
+
+### Bug Fixes
+
+* Using custom file system provider over content provider ([#1053](https://github.com/JohnstonCode/svn-scm/issues/1053)) ([4ceeafe](https://github.com/JohnstonCode/svn-scm/commit/4ceeafe7ccbaca7c5c0cadc785d15845bb61fb6a))
+
+## [2.12.3](https://github.com/JohnstonCode/svn-scm/compare/v2.12.2...v2.12.3) (2020-08-09)
+
+
+### Bug Fixes
+
+* tag open vsx release properly ([#1033](https://github.com/JohnstonCode/svn-scm/issues/1033)) ([486427d](https://github.com/JohnstonCode/svn-scm/commit/486427d80274de0307152daea1ff9bf2727ab6b6))
+
+## [2.12.2](https://github.com/JohnstonCode/svn-scm/compare/v2.12.1...v2.12.2) (2020-08-09)
+
+
+### Bug Fixes
+
+* Added Open VSX build ([#914](https://github.com/JohnstonCode/svn-scm/issues/914)) ([#963](https://github.com/JohnstonCode/svn-scm/issues/963)) ([d52c630](https://github.com/JohnstonCode/svn-scm/commit/d52c630189d27367bfcbd2e9fc00ee6b1a4686d5))
+
+## [2.12.1](https://github.com/JohnstonCode/svn-scm/compare/v2.12.0...v2.12.1) (2020-08-03)
+
+
+### Bug Fixes
+
+* Fixed styling on "Commit selected" page ([#1028](https://github.com/JohnstonCode/svn-scm/issues/1028)) ([c63e3a3](https://github.com/JohnstonCode/svn-scm/commit/c63e3a37680b2c6a664afe0d7314f8388c15de41))
+
+# [2.12.0](https://github.com/JohnstonCode/svn-scm/compare/v2.11.7...v2.12.0) (2020-08-03)
+
+
+### Features
+
+* Added config option to show previous commits by user ([#1023](https://github.com/JohnstonCode/svn-scm/issues/1023)) ([42d3c36](https://github.com/JohnstonCode/svn-scm/commit/42d3c3616697c5ba0459d93fb2940d5335f46e44))
+
+## [2.11.7](https://github.com/JohnstonCode/svn-scm/compare/v2.11.6...v2.11.7) (2020-08-02)
+
+
+### Bug Fixes
+
+* Fixed webpack dep issue on remote vscode ([#1025](https://github.com/JohnstonCode/svn-scm/issues/1025)) ([9a58729](https://github.com/JohnstonCode/svn-scm/commit/9a58729acf6eadf73a70b51ec269bc3443314639))
+
 ## [2.11.6](https://github.com/JohnstonCode/svn-scm/compare/v2.11.5...v2.11.6) (2020-08-01)
 
 
