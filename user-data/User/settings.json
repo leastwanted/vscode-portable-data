@@ -31,5 +31,8 @@
         "editor.formatOnSave": true,
     },
     "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-    "MarkdownPaste.path": "./images/"
+    "MarkdownPaste.path": "./images/",
+    "remote.SSH.remotePlatform": {
+        "47.115.113.95": "linux"
+    }
 }
