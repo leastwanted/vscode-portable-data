@@ -22,3 +22,4 @@ user-data/rapid_render.json
 __pycache__
 user-data/TransportSecurity
 extensions/.obsolete
+user-data/Local Storage/
