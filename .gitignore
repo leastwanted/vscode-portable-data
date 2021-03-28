@@ -23,3 +23,6 @@ __pycache__
 user-data/TransportSecurity
 extensions/.obsolete
 user-data/Local Storage/
+user-data/Local Storage/leveldb/LOG.old
+user-data/Local Storage/leveldb/LOG
+user-data/Local Storage/leveldb/CURRENT
