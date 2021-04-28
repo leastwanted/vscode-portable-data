@@ -1,0 +1,749 @@
+{
+	"name": "md-table-editor",
+	"displayName": "MdTableEditor",
+	"description": "Edit Markdown. format, move, remove, text or number sort(column only), multi select(column only), highlight the column and row",
+	"icon": "resources/app.png",
+	"version": "0.2.0",
+	"preview": true,
+	"publisher": "clover",
+	"keywords": [
+		"Markdown",
+		"Table"
+	],
+	"engines": {
+		"vscode": "^1.45.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/clover-plpl/vsc-md-table-editor.git"
+	},
+	"bugs": {
+		"url": "https://github.com/clover-plpl/vsc-md-table-editor/issues"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:markdown"
+	],
+	"main": "./out/VscMdTableEditor/src/extension.js",
+	"contributes": {
+		"views": {
+			"explorer": [
+				{
+					"id": "MdTableEditor.tableExplorer",
+					"name": "%MdTableEditor.Labels.MarkdownTableExplorer%",
+					"when": "MdTableEditor.isTreeViewEnabled"
+				}
+			]
+		},
+		"configuration": [
+			{
+				"title": "MdTableEditor config",
+				"properties": {
+					"mdtableeditor.isDebugMode": {
+						"type": "boolean",
+						"default": false,
+						"description": "%MdTableEditor.Config.isDebugMode%"
+					},
+					"mdtableeditor.isIconMenuEnabled": {
+						"type": "boolean",
+						"default": false,
+						"description": "%MdTableEditor.Config.isIconMenuEnabled%"
+					},
+					"mdtableeditor.isAutoFormatterEnabled": {
+						"type": "boolean",
+						"default": false,
+						"description": "%MdTableEditor.Config.isAutoFormatterEnabled%"
+					},
+					"mdtableeditor.isTreeViewEnabled": {
+						"type": "boolean",
+						"default": false,
+						"description": "%MdTableEditor.Config.isTreeViewEnabled%"
+					},
+					"mdtableeditor.isHighlighterEnabled": {
+						"type": "boolean",
+						"default": true,
+						"description": "%MdTableEditor.Config.isHighlighterEnabled%"
+					},
+					"mdtableeditor.commandViews": {
+						"type": "object",
+						"additionalProperties": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": [
+									"format",
+									"alignments",
+									"insert",
+									"remove",
+									"move",
+									"focus",
+									"selection",
+									"sort",
+									"MdTableEditor.beautifulFormat",
+									"MdTableEditor.naturalFormat",
+									"MdTableEditor.deleteComment",
+									"MdTableEditor.fillCells",
+									"MdTableEditor.changeAlignRight",
+									"MdTableEditor.changeAlignCenter",
+									"MdTableEditor.changeAlignLeft",
+									"MdTableEditor.insertTop",
+									"MdTableEditor.insertBottom",
+									"MdTableEditor.insertLeft",
+									"MdTableEditor.insertRight",
+									"MdTableEditor.removeColumn",
+									"MdTableEditor.removeRow",
+									"MdTableEditor.moveTop",
+									"MdTableEditor.moveBottom",
+									"MdTableEditor.moveLeft",
+									"MdTableEditor.moveRight",
+									"MdTableEditor.focusLeft",
+									"MdTableEditor.focusTop",
+									"MdTableEditor.focusBottom",
+									"MdTableEditor.focusRight",
+									"MdTableEditor.columnSelect",
+									"MdTableEditor.columnSelectAll",
+									"MdTableEditor.columnSelectEmpty",
+									"MdTableEditor.sortNumberAsc",
+									"MdTableEditor.sortNumberDesc",
+									"MdTableEditor.sortTextAsc",
+									"MdTableEditor.sortTextDesc",
+									"MdTableEditor.sortTextAsc.ignore",
+									"MdTableEditor.sortTextDesc.ignore"
+								]
+							}
+						},
+						"default": {
+							"context": [
+								"MdTableEditor.fillCells",
+								"MdTableEditor.insertTop",
+								"MdTableEditor.insertBottom",
+								"MdTableEditor.insertLeft",
+								"MdTableEditor.insertRight",
+								"MdTableEditor.removeColumn",
+								"MdTableEditor.removeRow",
+								"MdTableEditor.columnSelectEmpty",
+								"MdTableEditor.sortNumberAsc",
+								"MdTableEditor.sortNumberDesc",
+								"MdTableEditor.sortTextAsc.ignore",
+								"MdTableEditor.sortTextDesc.ignore"
+							],
+							"toolbar": [
+								"MdTableEditor.fillCells",
+								"MdTableEditor.changeAlignRight",
+								"MdTableEditor.changeAlignCenter",
+								"MdTableEditor.changeAlignLeft",
+								"MdTableEditor.insertTop",
+								"MdTableEditor.insertBottom",
+								"MdTableEditor.insertLeft",
+								"MdTableEditor.insertRight",
+								"MdTableEditor.removeColumn",
+								"MdTableEditor.removeRow",
+								"MdTableEditor.moveTop",
+								"MdTableEditor.moveBottom",
+								"MdTableEditor.moveLeft",
+								"MdTableEditor.moveRight",
+								"MdTableEditor.columnSelectEmpty",
+								"MdTableEditor.sortNumberAsc",
+								"MdTableEditor.sortNumberDesc",
+								"MdTableEditor.sortTextAsc.ignore",
+								"MdTableEditor.sortTextDesc.ignore"
+							]
+						}
+					}
+				}
+			}
+		],
+		"commands": [
+			{
+				"category": "MdTableEditor.edit",
+				"command": "MdTableEditor.fillCells",
+				"title": "%MdTableEditor.fillCells%",
+				"icon": {
+					"dark": "./resources/icon/format/format-fill-cells-white.svg",
+					"light": "./resources/icon/format/format-fill-cells-black.svg"
+				}
+			},
+			{
+				"category": "MdTableEditor.edit",
+				"command": "MdTableEditor.beautifulFormat",
+				"title": "%MdTableEditor.beautifulFormat%",
+				"icon": {
+					"dark": "./resources/icon/format/format-beautiful-white.svg",
+					"light": "./resources/icon/format/format-beautiful-black.svg"
+				}
+			},
+			{
+				"category": "MdTableEditor.edit",
+				"command": "MdTableEditor.naturalFormat",
+				"title": "%MdTableEditor.naturalFormat%"
+			},
+			{
+				"category": "MdTableEditor.edit",
+				"command": "MdTableEditor.deleteComment",
+				"title": "%MdTableEditor.deleteComment%"
+			},
+			{
+				"category": "MdTableEditor.align",
+				"command": "MdTableEditor.changeAlignLeft",
+				"title": "%MdTableEditor.changeAlignLeft%",
+				"icon": {
+					"dark": "./resources/icon/align/align-left-white.svg",
+					"light": "./resources/icon/align/align-left-black.svg"
+				}
+			},
+			{
+				"category": "MdTableEditor.align",
+				"command": "MdTableEditor.changeAlignCenter",
+				"title": "%MdTableEditor.changeAlignCenter%",
+				"icon": {
+					"dark": "./resources/icon/align/align-center-white.svg",
+					"light": "./resources/icon/align/align-center-black.svg"
+				}
+			},
+			{
+				"category": "MdTableEditor.align",
+				"command": "MdTableEditor.changeAlignRight",
+				"title": "%MdTableEditor.changeAlignRight%",
+				"icon": {
+					"dark": "./resources/icon/align/align-right-white.svg",
+					"light": "./resources/icon/align/align-light-black.svg"
+				}
+			},
+			{
+				"category": "MdTableEditor.insert",
+				"command": "MdTableEditor.insertLeft",
+				"title": "%MdTableEditor.insertLeft%",
+				"icon": {
+					"dark": "./resources/icon/insert/left-dark.svg",
+					"light": "./resources/icon/insert/left-light.svg"
+				}
+			},
+			{
+				"category": "MdTableEditor.insert",
+				"command": "MdTableEditor.insertTop",
+				"title": "%MdTableEditor.insertTop%",
+				"icon": {
+					"dark": "./resources/icon/insert/top-dark.svg",
+					"light": "./resources/icon/insert/top-light.svg"
+				}
+			},
+			{
+				"category": "MdTableEditor.insert",
+				"command": "MdTableEditor.insertBottom",
+				"title": "%MdTableEditor.insertBottom%",
+				"icon": {
+					"dark": "./resources/icon/insert/bottom-dark.svg",
+					"light": "./resources/icon/insert/bottom-light.svg"
+				}
+			},
+			{
+				"category": "MdTableEditor.insert",
+				"command": "MdTableEditor.insertRight",
+				"title": "%MdTableEditor.insertRight%",
+				"icon": {
+					"dark": "./resources/icon/insert/right-dark.svg",
+					"light": "./resources/icon/insert/right-light.svg"
+				}
+			},
+			{
+				"category": "NdTableEditor.remove",
+				"command": "MdTableEditor.removeColumn",
+				"title": "%MdTableEditor.removeColumn%",
+				"icon": {
+					"dark": "./resources/icon/remove/remove-column-white.svg",
+					"light": "./resources/icon/remove/remove-column-black.svg"
+				}
+			},
+			{
+				"category": "NdTableEditor.remove",
+				"command": "MdTableEditor.removeRow",
+				"title": "%MdTableEditor.removeRow%",
+				"icon": {
+					"dark": "./resources/icon/remove/remove-row-white.svg",
+					"light": "./resources/icon/remove/remove-row-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.moveLeft",
+				"enablement": "MdTableEditor.moveLeft",
+				"title": "%MdTableEditor.moveLeft%",
+				"icon": {
+					"dark": "./resources/icon/move/left-dark.svg",
+					"light": "./resources/icon/move/left-light.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.moveTop",
+				"enablement": "MdTableEditor.moveTop",
+				"title": "%MdTableEditor.moveTop%",
+				"icon": {
+					"dark": "./resources/icon/move/top-dark.svg",
+					"light": "./resources/icon/move/top-light.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.moveBottom",
+				"enablement": "MdTableEditor.moveBottom",
+				"title": "%MdTableEditor.moveBottom%",
+				"icon": {
+					"dark": "./resources/icon/move/bottom-dark.svg",
+					"light": "./resources/icon/move/bottom-light.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.moveRight",
+				"enablement": "MdTableEditor.moveRight",
+				"title": "%MdTableEditor.moveRight%",
+				"icon": {
+					"dark": "./resources/icon/move/right-dark.svg",
+					"light": "./resources/icon/move/right-light.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.focusLeft",
+				"enablement": "MdTableEditor.focusLeft",
+				"title": "%MdTableEditor.focusLeft%",
+				"icon": {
+					"dark": "./resources/icon/focus/left-dark.svg",
+					"light": "./resources/icon/focus/left-light.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.focusTop",
+				"enablement": "MdTableEditor.focusTop",
+				"title": "%MdTableEditor.focusTop%",
+				"icon": {
+					"dark": "./resources/icon/focus/top-dark.svg",
+					"light": "./resources/icon/focus/top-light.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.focusBottom",
+				"enablement": "MdTableEditor.focusBottom",
+				"title": "%MdTableEditor.focusBottom%",
+				"icon": {
+					"dark": "./resources/icon/focus/bottom-dark.svg",
+					"light": "./resources/icon/focus/bottom-light.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.focusRight",
+				"enablement": "MdTableEditor.focusRight",
+				"title": "%MdTableEditor.focusRight%",
+				"icon": {
+					"dark": "./resources/icon/focus/right-dark.svg",
+					"light": "./resources/icon/focus/right-light.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.columnSelect",
+				"enablement": "MdTableEditor.columnSelect",
+				"title": "%MdTableEditor.columnSelect%",
+				"icon": {
+					"dark": "./resources/icon/select/multi-select-white.svg",
+					"light": "./resources/icon/select/multi-select-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.columnSelectAll",
+				"enablement": "MdTableEditor.columnSelectAll",
+				"title": "%MdTableEditor.columnSelectAll%",
+				"icon": {
+					"dark": "./resources/icon/select/multi-select-all-white.svg",
+					"light": "./resources/icon/select/multi-select-all-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.columnSelectEmpty",
+				"enablement": "MdTableEditor.columnSelectEmpty",
+				"title": "%MdTableEditor.columnSelectEmpty%",
+				"icon": {
+					"dark": "./resources/icon/select/multi-select-empty-white.svg",
+					"light": "./resources/icon/select/multi-select-empty-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.sortNumberAsc",
+				"enablement": "MdTableEditor.sortNumberAsc",
+				"title": "%MdTableEditor.sortNumberAsc%",
+				"icon": {
+					"dark": "./resources/icon/sort/sort-number-asc-white.svg",
+					"light": "./resources/icon/sort/sort-number-asc-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.sortNumberDesc",
+				"enablement": "MdTableEditor.sortNumberDesc",
+				"title": "%MdTableEditor.sortNumberDesc%",
+				"icon": {
+					"dark": "./resources/icon/sort/sort-number-desc-white.svg",
+					"light": "./resources/icon/sort/sort-number-desc-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.sortTextAsc",
+				"enablement": "MdTableEditor.sortTextAsc",
+				"title": "%MdTableEditor.sortTextAsc%",
+				"icon": {
+					"dark": "./resources/icon/sort/sort-text-asc-white.svg",
+					"light": "./resources/icon/sort/sort-text-asc-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.sortTextDesc",
+				"enablement": "MdTableEditor.sortTextDesc",
+				"title": "%MdTableEditor.sortTextDesc%",
+				"icon": {
+					"dark": "./resources/icon/sort/sort-text-desc-white.svg",
+					"light": "./resources/icon/sort/sort-text-desc-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.sortTextAsc.ignore",
+				"enablement": "MdTableEditor.sortTextAsc.ignore",
+				"title": "%MdTableEditor.sortTextAsc.ignore%",
+				"icon": {
+					"dark": "./resources/icon/sort/sort-text-asc-ignore-white.svg",
+					"light": "./resources/icon/sort/sort-text-asc-ignore-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.sortTextDesc.ignore",
+				"enablement": "MdTableEditor.sortTextDesc.ignore",
+				"title": "%MdTableEditor.sortTextDesc.ignore%",
+				"icon": {
+					"dark": "./resources/icon/sort/sort-text-desc-ignore-white.svg",
+					"light": "./resources/icon/sort/sort-text-desc-ignore-black.svg"
+				}
+			},
+			{
+				"command": "MdTableEditor.scroll",
+				"title": "スクロール"
+			},
+			{
+				"command": "MdTableEditor.setToolbarCommandVisibility",
+				"title": "%MdTableEditor.setToolbarCommandVisibility%"
+			},
+			{
+				"command": "MdTableEditor.setContextCommandVisibility",
+				"title": "%MdTableEditor.setContextCommandVisibility%"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "MdTableEditor.fillCells",
+				"key": "shift+ctrl+c"
+			},
+			{
+				"command": "MdTableEditor.beautifulFormat",
+				"key": "shift+ctrl+f"
+			},
+			{
+				"command": "MdTableEditor.focusTop",
+				"key": "shift+ctrl+up"
+			},
+			{
+				"command": "MdTableEditor.focusBottom",
+				"key": "shift+ctrl+down"
+			},
+			{
+				"command": "MdTableEditor.focusRight",
+				"key": "shift+ctrl+right"
+			},
+			{
+				"command": "MdTableEditor.focusLeft",
+				"key": "shift+ctrl+left"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"group": "MdTableEditor.edit",
+					"command": "MdTableEditor.fillCells",
+					"when": "editorLangId == markdown && MdTableEditor.visibled && MdTableEditor.fillCells-context"
+				},
+				{
+					"group": "MdTableEditor.edit",
+					"command": "MdTableEditor.beautifulFormat",
+					"when": "editorLangId == markdown && MdTableEditor.visibled && MdTableEditor.beautifulFormat-context"
+				},
+				{
+					"group": "MdTableEditor.edit",
+					"command": "MdTableEditor.naturalFormat",
+					"when": "editorLangId == markdown && MdTableEditor.visibled && MdTableEditor.naturalFormat-context"
+				},
+				{
+					"group": "MdTableEditor.edit",
+					"command": "MdTableEditor.deleteComment",
+					"when": "editorLangId == markdown && MdTableEditor.visibled && MdTableEditor.deleteComment-context"
+				},
+				{
+					"group": "MdTableEditor.move",
+					"command": "MdTableEditor.moveLeft",
+					"when": "editorLangId == markdown && MdTableEditor.moveLeft && MdTableEditor.moveLeft-context"
+				},
+				{
+					"group": "MdTableEditor.move",
+					"command": "MdTableEditor.moveTop",
+					"when": "editorLangId == markdown && MdTableEditor.moveTop && MdTableEditor.moveTop-context"
+				},
+				{
+					"group": "MdTableEditor.move",
+					"command": "MdTableEditor.moveBottom",
+					"when": "editorLangId == markdown && MdTableEditor.moveBottom && MdTableEditor.moveBottom-context"
+				},
+				{
+					"group": "MdTableEditor.move",
+					"command": "MdTableEditor.moveRight",
+					"when": "editorLangId == markdown && MdTableEditor.moveRight && MdTableEditor.moveRight-context"
+				},
+				{
+					"group": "MdTableEditor.changeAlign",
+					"command": "MdTableEditor.changeAlignRight",
+					"when": "editorLangId == markdown && MdTableEditor.changeAlignRight && MdTableEditor.changeAlignRight-context"
+				},
+				{
+					"group": "MdTableEditor.changeAlign",
+					"command": "MdTableEditor.changeAlignCenter",
+					"when": "editorLangId == markdown && MdTableEditor.changeAlignCenter && MdTableEditor.changeAlignCenter-context"
+				},
+				{
+					"group": "MdTableEditor.changeAlign",
+					"command": "MdTableEditor.changeAlignLeft",
+					"when": "editorLangId == markdown && MdTableEditor.changeAlignLeft && MdTableEditor.changeAlignLeft-context"
+				},
+				{
+					"group": "MdTableEditor.insert",
+					"command": "MdTableEditor.insertTop",
+					"when": "editorLangId == markdown && MdTableEditor.insertTop && MdTableEditor.insertTop-context"
+				},
+				{
+					"group": "MdTableEditor.insert",
+					"command": "MdTableEditor.insertBottom",
+					"when": "editorLangId == markdown && MdTableEditor.insertBottom && MdTableEditor.insertBottom-context"
+				},
+				{
+					"group": "MdTableEditor.insert",
+					"command": "MdTableEditor.insertLeft",
+					"when": "editorLangId == markdown && MdTableEditor.insertLeft && MdTableEditor.insertLeft-context"
+				},
+				{
+					"group": "MdTableEditor.insert",
+					"command": "MdTableEditor.insertRight",
+					"when": "editorLangId == markdown && MdTableEditor.insertRight && MdTableEditor.insertRight-context"
+				},
+				{
+					"group": "MdTableEditor.columnSelect",
+					"command": "MdTableEditor.columnSelect",
+					"when": "editorLangId == markdown && MdTableEditor.columnSelect && MdTableEditor.columnSelect-context"
+				},
+				{
+					"group": "MdTableEditor.columnSelect",
+					"command": "MdTableEditor.columnSelectAll",
+					"when": "editorLangId == markdown && MdTableEditor.columnSelectAll && MdTableEditor.columnSelectAll-context"
+				},
+				{
+					"group": "MdTableEditor.columnSelect",
+					"command": "MdTableEditor.columnSelectEmpty",
+					"when": "editorLangId == markdown && MdTableEditor.columnSelectEmpty && MdTableEditor.columnSelectEmpty-context"
+				},
+				{
+					"group": "MdTableEditor.remove",
+					"command": "MdTableEditor.removeColumn",
+					"when": "editorLangId == markdown && MdTableEditor.removeColumn && MdTableEditor.removeColumn-context"
+				},
+				{
+					"group": "MdTableEditor.remove",
+					"command": "MdTableEditor.removeRow",
+					"when": "editorLangId == markdown && MdTableEditor.removeRow && MdTableEditor.removeRow-context"
+				},
+				{
+					"group": "MdTableEditor.sort",
+					"command": "MdTableEditor.sortNumberAsc",
+					"when": "editorLangId == markdown && MdTableEditor.sortNumberAsc && MdTableEditor.sortNumberAsc-context"
+				},
+				{
+					"group": "MdTableEditor.sort",
+					"command": "MdTableEditor.sortNumberDesc",
+					"when": "editorLangId == markdown && MdTableEditor.sortNumberDesc && MdTableEditor.sortNumberDesc-context"
+				},
+				{
+					"group": "MdTableEditor.sortText",
+					"command": "MdTableEditor.sortTextAsc",
+					"when": "editorLangId == markdown && MdTableEditor.sortTextAsc && MdTableEditor.sortTextAsc-context"
+				},
+				{
+					"group": "MdTableEditor.sortText",
+					"command": "MdTableEditor.sortTextDesc",
+					"when": "editorLangId == markdown && MdTableEditor.sortTextDesc && MdTableEditor.sortTextDesc-context"
+				},
+				{
+					"group": "MdTableEditor.sortText",
+					"command": "MdTableEditor.sortTextAsc.ignore",
+					"when": "editorLangId == markdown && MdTableEditor.sortTextAsc.ignore && MdTableEditor.sortTextAsc.ignore-context"
+				},
+				{
+					"group": "MdTableEditor.sortText",
+					"command": "MdTableEditor.sortTextDesc.ignore",
+					"when": "editorLangId == markdown && MdTableEditor.sortTextDesc.ignore && MdTableEditor.sortTextDesc.ignore-context"
+				},
+				{
+					"command": "MdTableEditor.setContextCommandVisibility",
+					"when": "editorLangId == markdown"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "MdTableEditor.fillCells",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.fillCells-toolbar",
+					"group": "navigation@101"
+				},
+				{
+					"command": "MdTableEditor.beautifulFormat",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.beautifulFormat-toolbar",
+					"group": "navigation@102"
+				},
+				{
+					"command": "MdTableEditor.changeAlignLeft",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.changeAlignLeft-toolbar",
+					"group": "navigation@201"
+				},
+				{
+					"command": "MdTableEditor.changeAlignCenter",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.changeAlignCenter-toolbar",
+					"group": "navigation@202"
+				},
+				{
+					"command": "MdTableEditor.changeAlignRight",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.changeAlignRight-toolbar",
+					"group": "navigation@203"
+				},
+				{
+					"command": "MdTableEditor.moveLeft",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.moveLeft-toolbar",
+					"group": "navigation@301"
+				},
+				{
+					"command": "MdTableEditor.moveTop",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.moveTop-toolbar",
+					"group": "navigation@302"
+				},
+				{
+					"command": "MdTableEditor.moveBottom",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.moveBottom-toolbar",
+					"group": "navigation@303"
+				},
+				{
+					"command": "MdTableEditor.moveRight",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.moveRight-toolbar",
+					"group": "navigation@304"
+				},
+				{
+					"command": "MdTableEditor.insertLeft",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.insertLeft-toolbar",
+					"group": "navigation@401"
+				},
+				{
+					"command": "MdTableEditor.insertTop",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.insertTop-toolbar",
+					"group": "navigation@402"
+				},
+				{
+					"command": "MdTableEditor.insertBottom",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.insertBottom-toolbar",
+					"group": "navigation@403"
+				},
+				{
+					"command": "MdTableEditor.insertRight",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.insertRight-toolbar",
+					"group": "navigation@404"
+				},
+				{
+					"command": "MdTableEditor.removeRow",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.removeRow-toolbar",
+					"group": "navigation@601"
+				},
+				{
+					"command": "MdTableEditor.removeColumn",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.removeColumn-toolbar",
+					"group": "navigation@601"
+				},
+				{
+					"command": "MdTableEditor.sortNumberAsc",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.sortNumberAsc-toolbar",
+					"group": "navigation@701"
+				},
+				{
+					"command": "MdTableEditor.sortNumberDesc",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.sortNumberDesc-toolbar",
+					"group": "navigation@702"
+				},
+				{
+					"command": "MdTableEditor.sortTextAsc.ignore",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.sortTextAsc.ignore-toolbar",
+					"group": "navigation@703"
+				},
+				{
+					"command": "MdTableEditor.sortTextDesc.ignore",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.sortTextDesc.ignore-toolbar",
+					"group": "navigation@704"
+				},
+				{
+					"command": "MdTableEditor.sortTextAsc",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.sortTextAsc-toolbar",
+					"group": "navigation@705"
+				},
+				{
+					"command": "MdTableEditor.sortTextDesc",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.sortTextDesc-toolbar",
+					"group": "navigation@706"
+				},
+				{
+					"command": "MdTableEditor.columnSelect",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.columnSelect-toolbar",
+					"group": "navigation@801"
+				},
+				{
+					"command": "MdTableEditor.columnSelectAll",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.columnSelectAll-toolbar",
+					"group": "navigation@802"
+				},
+				{
+					"command": "MdTableEditor.columnSelectEmpty",
+					"when": "editorLangId == markdown && MdTableEditor.isIconMenuEnabled && MdTableEditor.columnSelectEmpty-toolbar",
+					"group": "navigation@803"
+				},
+				{
+					"command": "MdTableEditor.setToolbarCommandVisibility",
+					"when": "editorLangId == markdown"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.2",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^14.0.11",
+		"@types/vscode": "^1.45.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.2.0",
+		"typescript": "^3.9.5",
+		"tslint": "^6.1.2",
+		"vscode-test": "^1.4.0"
+	},
+	"__metadata": {
+		"id": "0e9162d1-5148-4913-8d1b-2aa642154dd7",
+		"publisherId": "18b03382-02ac-4b1a-8bcc-768463f83539",
+		"publisherDisplayName": "Clover++",
+		"installedTimestamp": 1619588926865
+	}
+}

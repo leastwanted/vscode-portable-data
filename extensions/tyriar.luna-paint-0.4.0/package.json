@@ -1,0 +1,759 @@
+{
+	"name": "luna-paint",
+	"displayName": "Luna Paint",
+	"author": "Daniel Imms",
+	"publisher": "Tyriar",
+	"icon": "images/icon.png",
+	"preview": true,
+	"description": "An image editor built into VS Code, supports png, bmp, jpg and ico formats.",
+	"version": "0.4.0",
+	"engines": {
+		"vscode": "^1.50.0"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lunapaint/vscode-luna-paint.git"
+	},
+	"bugs": {
+		"url": "https://github.com/lunapaint/vscode-luna-paint/issues"
+	},
+	"galleryBanner": {
+		"theme": "light",
+		"color": "#00ACC2"
+	},
+	"categories": [
+		"Other",
+		"Visualization"
+	],
+	"keywords": [
+		"photo",
+		"paint",
+		"pixel",
+		"image",
+		"raster",
+		"graphics",
+		"icon"
+	],
+	"activationEvents": [
+		"onCustomEditor:luna.editor",
+		"onCommand:luna.file.new"
+	],
+	"main": "./luna/dist/vscode/exthost/extension.js",
+	"contributes": {
+		"walkthroughs": [
+			{
+				"id": "exampleProject",
+				"title": "Learn Luna Paint's Interface",
+				"description": "This walkthrough covers a basic overview of the interface to help you get started editing images within VS Code",
+				"primary": true,
+				"tasks": [
+					{
+						"id": "luna.tools",
+						"title": "Tools",
+						"description": "The tools window allows the selection of the active tool which are the primary way of manipulating images. Just above the tools window are any options for the active tool.",
+						"button": {
+							"title": "Ok",
+							"command": "fakecommand"
+						},
+						"media": {
+							"path": "images/getting-started/tools.png",
+							"altText": ""
+						}
+					},
+					{
+						"id": "luna.palette",
+						"title": "Palette",
+						"description": "The primary and secondary colors are defined and can be changed in the palette. Press x to swap the primary and secondary colors.",
+						"button": {
+							"title": "Ok",
+							"command": "fakecommand"
+						},
+						"media": {
+							"path": "images/getting-started/palette.png",
+							"altText": ""
+						}
+					},
+					{
+						"id": "luna.history",
+						"title": "History",
+						"description": "Any changes made to the image will show up in the history window. Clicking on an entry will undo to that point.",
+						"button": {
+							"title": "Ok",
+							"command": "fakecommand"
+						},
+						"media": {
+							"path": "images/getting-started/history.png",
+							"altText": ""
+						}
+					},
+					{
+						"id": "luna.layers",
+						"title": "Layers",
+						"description": "It's possible to organize an image out of a set of sub-images. Blend modes can also be used which determine how the two images combine.",
+						"button": {
+							"title": "Ok",
+							"command": "fakecommand"
+						},
+						"media": {
+							"path": "images/getting-started/layers.png",
+							"altText": ""
+						}
+					},
+					{
+						"id": "luna.minimap",
+						"title": "Minimap",
+						"description": "The minimap shows a zoomed out preview of the image which can also be used to navigate within the canvas",
+						"button": {
+							"title": "Ok",
+							"command": "fakecommand"
+						},
+						"media": {
+							"path": "images/getting-started/minimap.png",
+							"altText": ""
+						}
+					},
+					{
+						"id": "luna.statusbar",
+						"title": "Status Bar",
+						"description": "Luna Paint has it's own editor-specific status bar for showing tool related information on the left and image related information on the right.",
+						"button": {
+							"title": "Ok",
+							"command": "fakecommand"
+						},
+						"media": {
+							"path": "images/getting-started/statusbar.png",
+							"altText": ""
+						}
+					}
+				]
+			}
+		],
+		"commands": [
+			{
+				"command": "luna.file.new",
+				"title": "File > New Image",
+				"category": "Luna"
+			},
+			{
+				"command": "luna.adjustments.invert",
+				"title": "Adjustments > Invert",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.edit.copy",
+				"title": "Edit > Copy",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.edit.cut",
+				"title": "Edit > Cut",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.edit.paste",
+				"title": "Edit > Paste",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.cropToSelection",
+				"title": "Image > Crop to Selection",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.expandCanvasToSelection",
+				"title": "Image > Expand Canvas to Selection",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.resize",
+				"title": "Image > Resize",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.canvasSize",
+				"title": "Image > Canvas Size",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.flipHorizontal",
+				"title": "Image > Flip Horizontal",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.flipVertical",
+				"title": "Image > Flip Vertical",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.rotate180",
+				"title": "Image > Rotate 180°",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.rotate90Clockwise",
+				"title": "Image > Rotate 90° Clockwise",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.rotate90CounterClockwise",
+				"title": "Image > Rotate 90° Counter-Clockwise",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.flattenLayers",
+				"title": "Image > Flatten Layers",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.finishActiveAction",
+				"title": "Image > Finish Active Action",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.addNewLayer",
+				"title": "Layer > Add New Layer",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.deleteLayer",
+				"title": "Layer > Delete Layer",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.mergeLayerDown",
+				"title": "Layer > Merge Layer Down",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.flipHorizontal",
+				"title": "Layer > Flip Horizontal",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.flipVertical",
+				"title": "Layer > Flip Vertical",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.rotate180",
+				"title": "Layer > Rotate 180°",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.goToTopLayer",
+				"title": "Layer > Go to Top Layer",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.goToLayerAbove",
+				"title": "Layer > Go to Layer Above",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.goToLayerBelow",
+				"title": "Layer > Go to Layer Below",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.goToBottomLayer",
+				"title": "Layer > Go to Bottom Layer",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.moveLayerToTop",
+				"title": "Layer > Move Layer to Top",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.moveLayerUp",
+				"title": "Layer > Move Layer Up",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.moveLayerDown",
+				"title": "Layer > Move Layer Down",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.moveLayerToBottom",
+				"title": "Layer > Move Layer to Bottom",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.palette.swapColors",
+				"title": "Palette > Swap Colors",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.selection.deselect",
+				"title": "Selection > Deselect",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.selection.erase",
+				"title": "Selection > Erase",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.selection.selectAll",
+				"title": "Selection > Select All",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.colorPicker",
+				"title": "Tool > Color Picker",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.eraser",
+				"title": "Tool > Eraser",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.fill",
+				"title": "Tool > Fill",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.movePixels",
+				"title": "Tool > Move Pixels",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.moveSelection",
+				"title": "Tool > Move Selection",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.toggleMoveTool",
+				"title": "Tool > Toggle Move Tool",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.pencil",
+				"title": "Tool > Pencil",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.rectangle",
+				"title": "Tool > Rectangle",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.selection",
+				"title": "Tool > Selection",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.zoom",
+				"title": "Tool > Zoom",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.view.focusCanvas",
+				"title": "View > Focus Canvas",
+				"category": "Luna",
+				"when": "focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.view.zoomIn",
+				"title": "View > Zoom In",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.view.zoomOut",
+				"title": "View > Zoom Out",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.view.actualSize",
+				"title": "View > Actual Size",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.view.fitToWindow",
+				"title": "View > Fit to Window",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.history.toggleHistoryWindow",
+				"title": "History > Toggle History Window",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.toggleToolsWindow",
+				"title": "Window > Toggle Tools Window",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.minimap.toggleMinimapWindow",
+				"title": "Window > Toggle Minimap Window",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.palette.togglePaletteWindow",
+				"title": "Window > Toggle Palette Window",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.toggleImagesWindow",
+				"title": "Window > Toggle Images Window",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.toggleLayersWindow",
+				"title": "Window > Toggle Layers Window",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "luna.adjustments.invert",
+				"key": "ctrl+shift+i",
+				"mac": "cmd+shift+i",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.edit.copy",
+				"key": "ctrl+c",
+				"mac": "cmd+c",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor' && !luna:textFocused"
+			},
+			{
+				"command": "luna.edit.cut",
+				"key": "ctrl+x",
+				"mac": "cmd+x",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor' && !luna:textFocused"
+			},
+			{
+				"command": "luna.edit.paste",
+				"key": "ctrl+v",
+				"mac": "cmd+v",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor' && !luna:textFocused"
+			},
+			{
+				"command": "luna.file.new",
+				"key": "ctrl+n",
+				"mac": "cmd+n",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.cropToSelection",
+				"key": "ctrl+shift+x",
+				"mac": "cmd+shift+x",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.resize",
+				"key": "ctrl+r",
+				"mac": "cmd+r",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.canvasSize",
+				"key": "ctrl+shift+r",
+				"mac": "cmd+shift+r",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.rotate180",
+				"key": "ctrl+j",
+				"mac": "cmd+j",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.rotate90Clockwise",
+				"key": "ctrl+h",
+				"mac": "cmd+h",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.rotate90CounterClockwise",
+				"key": "ctrl+g",
+				"mac": "cmd+g",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.flattenLayers",
+				"key": "ctrl+shift+f",
+				"mac": "cmd+shift+f",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.image.finishActiveAction",
+				"key": "enter",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.addNewLayer",
+				"key": "ctrl+shift+n",
+				"mac": "cmd+shift+n",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.deleteLayer",
+				"key": "ctrl+shift+delete",
+				"mac": "cmd+shift+delete",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.mergeLayerDown",
+				"key": "ctrl+m",
+				"mac": "cmd+m",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.goToTopLayer",
+				"key": "alt+ctrl+pageup",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.goToLayerAbove",
+				"key": "alt+pageup",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.goToLayerBelow",
+				"key": "alt+pagedown",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.goToBottomLayer",
+				"key": "alt+ctrl+pagedown",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.colorPicker",
+				"key": "k",
+				"when": "luna:focused && focusedView == '' && !sideBarFocus && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.eraser",
+				"key": "e",
+				"when": "luna:focused && focusedView == '' && !sideBarFocus && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.fill",
+				"key": "f",
+				"when": "luna:focused && focusedView == '' && !sideBarFocus && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.toggleMoveTool",
+				"key": "m",
+				"when": "luna:focused && focusedView == '' && !sideBarFocus && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.pencil",
+				"key": "p",
+				"when": "luna:focused && focusedView == '' && !sideBarFocus && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.rectangle",
+				"key": "o",
+				"when": "luna:focused && focusedView == '' && !sideBarFocus && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.selection",
+				"key": "s",
+				"when": "luna:focused && focusedView == '' && !sideBarFocus && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.zoom",
+				"key": "z",
+				"when": "luna:focused && focusedView == '' && !sideBarFocus && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.palette.swapColors",
+				"key": "x",
+				"when": "luna:focused && focusedView == '' && !sideBarFocus && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.selection.deselect",
+				"key": "ctrl+d",
+				"mac": "cmd+d",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.selection.erase",
+				"key": "delete",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.selection.selectAll",
+				"key": "ctrl+a",
+				"mac": "cmd+a",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor' && !luna:textFocused"
+			},
+			{
+				"command": "luna.view.focusCanvas",
+				"key": "escape",
+				"category": "Luna",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.view.zoomIn",
+				"key": "ctrl++",
+				"mac": "cmd++",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.view.zoomOut",
+				"key": "ctrl+-",
+				"mac": "cmd+-",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.view.actualSize",
+				"key": "ctrl+9",
+				"mac": "cmd+9",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.view.fitToWindow",
+				"key": "ctrl+0",
+				"mac": "cmd+0",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.history.toggleHistoryWindow",
+				"key": "f6",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.tool.toggleToolsWindow",
+				"key": "f5",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.palette.togglePaletteWindow",
+				"key": "f8",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			},
+			{
+				"command": "luna.layer.toggleLayersWindow",
+				"key": "f7",
+				"when": "luna:focused && focusedView == '' && activeCustomEditorId == 'luna.editor'"
+			}
+		],
+		"customEditors": [
+			{
+				"viewType": "luna.editor",
+				"displayName": "Luna Paint Image Editor",
+				"priority": "default",
+				"selector": [
+					{
+						"filenamePattern": "*.bmp"
+					},
+					{
+						"filenamePattern": "*.ico"
+					},
+					{
+						"filenamePattern": "*.png"
+					},
+					{
+						"filenamePattern": "*.jpg"
+					},
+					{
+						"filenamePattern": "*.jpeg"
+					}
+				]
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Luna",
+			"properties": {
+				"luna.defaultImageSize": {
+					"type": "object",
+					"description": "The default size of new images.",
+					"properties": {
+						"width": {
+							"type": "number",
+							"default": 800
+						},
+						"height": {
+							"type": "number",
+							"default": 800
+						}
+					}
+				},
+				"luna.retainContextWhenHidden": {
+					"description": "Whether to hold onto the editor's context when the tab is no longer visible. The editor should display much faster but will cause the memory not to get released, which could be significant for large images and/or large history. Disable this when minimizing the memory impact of backgrounded tabs is important.\n\nThis requires a window reload to take effect.",
+					"type": "boolean",
+					"default": true
+				},
+				"luna.hotExitMaxPixels": {
+					"description": "The maximum number of pixels (width x height) for the image (or history entries) to allow hot exit backups to occur, hot exit may lock up the editor as the image gets larger.",
+					"type": "number",
+					"default": 50000
+				}
+			}
+		}
+	},
+	"scripts": {
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"__metadata": {
+		"id": "4358224d-f1ef-4635-a14b-a2f784a06e3d",
+		"publisherId": "738ff3bb-8e77-45d5-bd26-7c9ad62959b9",
+		"publisherDisplayName": "Daniel Imms"
+	}
+}

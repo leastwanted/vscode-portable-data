@@ -26,3 +26,5 @@ user-data/Local Storage/
 user-data/Local Storage/leveldb/LOG.old
 user-data/Local Storage/leveldb/LOG
 user-data/Local Storage/leveldb/CURRENT
+user-data/Crashpad/metadata
+user-data/Crashpad
