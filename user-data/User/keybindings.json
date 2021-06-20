@@ -1,3 +1,21 @@
 // Place your key bindings in this file to override the defaults
 [
+    {
+        "key": "ctrl+alt+f",
+        "command": "luna.image.flattenLayers",
+        "when": "luna:focused && activeCustomEditorId == 'luna.editor' && focusedView == ''"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "-luna.image.flattenLayers",
+        "when": "luna:focused && activeCustomEditorId == 'luna.editor' && focusedView == ''"
+    },
+    {
+        "key": "ctrl+alt+f",
+        "command": "MdTableEditor.beautifulFormat"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "-MdTableEditor.beautifulFormat"
+    }
 ]

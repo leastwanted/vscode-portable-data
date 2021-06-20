@@ -1,0 +1,63 @@
+{
+	"name": "calculate",
+	"displayName": "Calculate",
+	"description": "Select some math, evaluate it",
+	"version": "2.1.0",
+	"publisher": "acarreiro",
+	"engines": {
+		"vscode": "^0.10.6"
+	},
+	"author": {
+		"name": "Andrew Carreiro",
+		"email": "andrew@headfirst.ca",
+		"url": "http://headfirst.ca/"
+	},
+	"license": "WTFPL",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/andrewcarreiro/vscode-calculate"
+	},
+	"icon": "store-icon.png",
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.calculate",
+				"title": "Calculate"
+			},
+			{
+				"command": "extension.calculateReplace",
+				"title": "Calculate and Replace"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"compile": "tsc -p ./",
+		"dev": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.32",
+		"@types/node": "^6.0.40",
+		"mocha": "^5.2.0",
+		"typescript": "^2.0.3",
+		"vscode": "^1.1.10"
+	},
+	"dependencies": {
+		"@types/mathjs": "0.0.37",
+		"mathjs": "3.17.0"
+	},
+	"__metadata": {
+		"id": "ba77bee9-98dc-4b5f-ae4a-9701d1dab0f8",
+		"publisherId": "06466867-0a4a-4d58-8c7b-852d0f79ff2e",
+		"publisherDisplayName": "Andrew Carreiro",
+		"installedTimestamp": 1624185788007
+	}
+}

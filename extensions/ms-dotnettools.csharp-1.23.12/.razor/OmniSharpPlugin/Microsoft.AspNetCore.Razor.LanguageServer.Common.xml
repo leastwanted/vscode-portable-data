@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNetCore.Razor.LanguageServer.Common</name>
+    </assembly>
+    <members>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Common.LanguageServerConstants.CodeActions.UnformattedRemap">
+            <summary>
+            Remaps without formatting the resolved code action edit
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Common.LanguageServerConstants.CodeActions.Default">
+            <summary>
+            Remaps and formats the resolved code action edit
+            </summary>
+        </member>
+    </members>
+</doc>

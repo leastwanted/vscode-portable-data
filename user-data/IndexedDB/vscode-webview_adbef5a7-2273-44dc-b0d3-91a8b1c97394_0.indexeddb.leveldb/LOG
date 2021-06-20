@@ -1,0 +1,5 @@
+2021/06/18-13:24:55.342 2818 Reusing MANIFEST C:\softwares\VSCode\data\user-data\IndexedDB\vscode-webview_adbef5a7-2273-44dc-b0d3-91a8b1c97394_0.indexeddb.leveldb/MANIFEST-000001
+2021/06/18-13:25:03.340 2fd8 Level-0 table #5: started
+2021/06/18-13:25:03.347 2fd8 Level-0 table #5: 1912 bytes OK
+2021/06/18-13:25:03.349 2fd8 Delete type=0 #3
+2021/06/18-13:25:03.350 2fd8 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
