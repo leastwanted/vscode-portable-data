@@ -28,3 +28,5 @@ user-data/Local Storage/leveldb/LOG
 user-data/Local Storage/leveldb/CURRENT
 user-data/Crashpad/metadata
 user-data/Crashpad
+user-data/Service Worker/
+extensions.zip

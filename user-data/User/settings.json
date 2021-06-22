@@ -16,16 +16,12 @@
     "workbench.startupEditor": "none",
     "workbench.settings.editor": "json",
 
-    // extensions
-    "markdown-preview-enhanced.phantomPath": "D:\\softwares\\VSCode\\data\\bin\\phantomjs",
-
     "path-autocomplete.triggerOutsideStrings": true,
-
-    "svn.enableProposedApi": "product",
 
     // language specific
     "[markdown]": {
         "editor.formatOnSave": true,
+        "editor.quickSuggestions": true
     },
     "terminal.integrated.shell.windows": "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "MarkdownPaste.path": "./images/",
@@ -41,11 +37,9 @@
     "markdown-preview-enhanced.protocolsWhiteList": "http://, https://, atom://, file://, mailto:, tel:, zotero://",
     "plantuml.render": "Local",
     "markdown-preview-enhanced.enableScriptExecution": true,
-    "calendar.google.credentialsFile": "C:\\softwares\\VSCode\\data\\misc\\client_secret_505245446402-vh6dnhfno8s2i0bhmeemvb3av3ha37ro.apps.googleusercontent.com.json",
-    "workbench.colorTheme": "One Dark Modern",
     "editor.quickSuggestions": {
         "other": true,
         "comments": true,
         "strings": true
-    }
+    },
 }
