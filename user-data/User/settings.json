@@ -42,5 +42,10 @@
     "plantuml.render": "Local",
     "markdown-preview-enhanced.enableScriptExecution": true,
     "calendar.google.credentialsFile": "C:\\softwares\\VSCode\\data\\misc\\client_secret_505245446402-vh6dnhfno8s2i0bhmeemvb3av3ha37ro.apps.googleusercontent.com.json",
-    "workbench.colorTheme": "One Dark Modern"
+    "workbench.colorTheme": "One Dark Modern",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    }
 }
