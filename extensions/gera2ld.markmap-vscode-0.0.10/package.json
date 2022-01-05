@@ -1,0 +1,119 @@
+{
+	"name": "markmap-vscode",
+	"version": "0.0.10",
+	"description": "Visualize your markdown in VSCode",
+	"author": "Gerald <gera2ld@live.com>",
+	"license": "MIT",
+	"displayName": "Markmap",
+	"publisher": "gera2ld",
+	"icon": "assets/favicon.png",
+	"engines": {
+		"vscode": "^1.51.0"
+	},
+	"categories": [
+		"Visualization"
+	],
+	"keywords": [
+		"markmap",
+		"mindmap",
+		"markdown"
+	],
+	"activationEvents": [
+		"onCommand:markmap-vscode.open",
+		"onCustomEditor:markmap-vscode.markmap",
+		"onCustomEditor:markmap-vscode.markmap.default"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "markmap-vscode.open",
+				"title": "Open as markmap",
+				"icon": {
+					"light": "./assets/light.svg",
+					"dark": "./assets/dark.svg"
+				}
+			}
+		],
+		"customEditors": [
+			{
+				"viewType": "markmap-vscode.markmap",
+				"displayName": "Markmap",
+				"selector": [
+					{
+						"filenamePattern": "*.md"
+					}
+				],
+				"priority": "option"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "markmap-vscode.open",
+					"when": "editorLangId == markdown"
+				}
+			],
+			"explorer/context": [
+				{
+					"when": "resourceLangId == markdown",
+					"command": "markmap-vscode.open",
+					"group": "navigation"
+				}
+			],
+			"editor/title": [
+				{
+					"when": "resourceLangId == markdown && activeEditor == workbench.editors.files.textFileEditor",
+					"command": "markmap-vscode.open",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"prepare": "husky install",
+		"vscode:prepublish": "yarn compile",
+		"dev": "gulp dev",
+		"build": "gulp build",
+		"compile": "yarn lint && yarn build",
+		"lint": "eslint --ext .ts,.tsx .",
+		"transform": "locky yarn yarn"
+	},
+	"repository": "https://github.com/gera2ld/markmap-vscode",
+	"main": "dist/extension.js",
+	"files": [
+		"dist"
+	],
+	"devDependencies": {
+		"@babel/runtime": "^7.16.3",
+		"@gera2ld/locky": "^0.1.1",
+		"@gera2ld/plaid": "~2.4.0",
+		"@gera2ld/plaid-common-ts": "~2.4.0",
+		"@gera2ld/plaid-rollup": "~2.4.0",
+		"@types/glob": "^7.2.0",
+		"@types/lodash.debounce": "^4.0.6",
+		"@types/node": "^16.11.10",
+		"@types/vscode": "~1.51.0",
+		"d3": "^7.1.1",
+		"del": "^6.0.0",
+		"fancy-log": "^1.3.3",
+		"gulp": "^4.0.2",
+		"gulp-concat": "^2.6.1",
+		"husky": "^7.0.4",
+		"lodash.debounce": "^4.0.8",
+		"markmap-lib": "^0.12.0",
+		"markmap-toolbar": "^0.2.0",
+		"markmap-view": "^0.2.7"
+	},
+	"husky": {
+		"hooks": {
+			"pre-push": "yarn lint",
+			"pre-commit": "yarn transform -t"
+		}
+	},
+	"__metadata": {
+		"id": "2392d4a0-3976-49ea-af95-7001abb8c75a",
+		"publisherId": "4e3f72cb-a32e-4f0b-bd61-4f5f85efe190",
+		"publisherDisplayName": "Gerald Liu",
+		"installedTimestamp": 1638147269664
+	}
+}

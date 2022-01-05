@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src ${webview.cspSource} 'self' 'unsafe-eval' blob: data:; style-src ${webview.cspSource} 'unsafe-inline';">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>glTF Preview</title>
+    <!-- The required assets are injected here by the VSCode extension. -->
+    {assets}
+</head>
+<body>
+    <!-- The 3D-engine specific HTML content will be dynamically inserted within this div whenever the
+         active 3D engine changes. -->
+    <div id="content"></div>
+
+    <!-- This is the main UI panel shown in front of the model preview. -->
+    <div id="mainUI" class="showControls" data-bind="css: { 'showControls': showControls() }">
+        <div class="topUI"><span>engine:</span></div>
+        <div class="rowUI radioButtons" data-bind="foreach: engineInfo">
+            <label data-bind="css: {active: $parent.selectedEngine() === $data}"><input type="radio" name="engine"
+                data-bind="checked: $parent.selectedEngine, checkedValue: $data" /><span data-bind="text: name"></span></label>
+        </div>
+        <div class="rowUI" data-bind="visible: hasBackground">
+            <label class="checkboxLabel" data-bind="css: { active: showBackground() }">
+                <input type="checkbox" data-bind="checked: showBackground" />
+                <span class="angleBox"><span></span></span>
+                <span>Show Background</span>
+            </label>
+        </div>
+        <div class="rowUI" style="display: none;" data-bind="visible: animations().length > 0">
+            <div class="smallHeading">animations:</div>
+            <div class="embeddedList" data-bind="foreach: animations">
+                <label class="checkboxLabel" data-bind="css: { active: active() }">
+                    <input type="checkbox" data-bind="checked: active">
+                    <span class="angleBox"><span></span></span>
+                    <span data-bind="text: name"></span>
+                </label>
+            </div>
+            <div class="radioButtons" data-bind="visible: animations().length > 1, foreach: animPlayAllNoneOptions">
+                <label data-bind="css: {active: $parent.animPlayAllNone() === $data}"><input type="radio" name="allOrNoAnimations"
+                    data-bind="checked: $parent.animPlayAllNone, checkedValue: $data" /><span data-bind="text: $data"></span></label>
+            </div>
+        </div>
+        <div data-bind="template: { name: engineUI }"></div>
+        <div class="bottomUI" data-bind="click: toggleControls"><span data-bind="text: controlText()"></span></div>
+    </div>
+    <script type="text/html" id="blankTemplate"></script>
+</body>
+</html>

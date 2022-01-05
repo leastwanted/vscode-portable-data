@@ -1,0 +1,172 @@
+:root {
+    --luna-icon-brightness: 1;
+    --luna-icon-list-active-brightness: 1;
+    --luna-statusBar-icon-brightness: 1;
+    --luna-breadcrumb-background: var(--vscode-breadcrumb-background, #181e29);
+    --luna-breadcrumb-foreground: var(--vscode-breadcrumb-foreground, #efefefcc);
+    --luna-button-background: var(--vscode-button-background, #399ef4);
+    --luna-button-border: var(--vscode-button-border, --luna-button-background);
+    --luna-button-foreground: var(--vscode-button-foreground, "#ffffff");
+    --luna-button-hoverBackground: var(--vscode-button-hoverBackground, #72b9f7);
+    --luna-editor-backgroundColor: var(--vscode-editor-background, #181e29);
+    --luna-editor-foreground: var(--vscode-editor-foreground, #efefef);
+    --luna-editor-widget-background: var(--vscode-editorWidget-background, #1c2431);
+    --luna-editor-widget-foreground: var(--vscode-editorWidget-foreground, #ffffff);
+    --luna-focusColor: var(--vscode-focusBorder, #399EF4);
+    --luna-foreground: var(--vscode-foreground, #efefef);
+    --luna-list-hoverBackground: var(--vscode-list-hoverBackground, #ffffff1a);
+    --luna-list-activeBackgroundColor: var(--vscode-list-activeSelectionBackground, #399EF480);
+    --luna-list-activeForegroundColor: var(--vscode-list-activeSelectionForeground, #ffffff);
+    --luna-list-inactiveBackgroundColor: var(--vscode-list-inactiveSelectionBackground, #ffffff33);
+    --luna-list-dropBackgroundColor: var(--vscode-list-dropBackground, #399EF480);
+    --luna-sideBar-background: var(--vscode-sideBar-background, #1c2431);
+    --luna-statusBarItem-hoverBackground: var(--vscode-statusBarItem-hoverBackground, #ffffff20);
+}
+
+a:focus, button:focus, button:active, input:focus, select:focus, textarea:focus {
+    outline: 1px solid var(--luna-focusColor);
+}
+
+.luna-icon {
+    filter: brightness(var(--luna-icon-brightness, 1));
+}
+.luna-icon-before::before {
+    filter: brightness(var(--luna-icon-brightness, 1));
+}
+
+body {
+    font-family: 'Segoe WPC', 'Segoe UI', sans-serif;
+    user-select: none;
+    margin: 0;
+    touch-action: none;
+}
+
+#top,
+#middle,
+#bottom {
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+
+#top {
+    height: 22px;
+}
+
+#middle {
+    bottom: 22px;
+    top: 22px;
+}
+
+#bottom {
+    height: 22px;
+    bottom: 0;
+}
+
+#canvas {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+#canvas {
+    background: var(--luna-editor-backgroundColor);
+    image-rendering: pixelated;
+}
+#canvas.loaded {
+    background: url(transparentBackground.png) !important;
+}
+
+#canvas canvas.animation {
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    left: 0;
+}
+
+#canvas .views {
+    user-select: none;
+    pointer-events: none;
+}
+
+.toast-message {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--luna-editor-backgroundColor);
+    color: var(--luna-editor-foreground);
+    padding: 1em;
+    font-size: 2em;
+    opacity: 0.75;
+    border-radius: 5px;
+}
+.toast-message.fade {
+    transition: opacity 500ms ease;
+    opacity: 0;
+}
+
+#gui {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.move-handle {
+    position: absolute;
+    border: 2px solid var(--luna-focusColor);
+    border-radius: 50%;
+    height: 9px;
+    width: 9px;
+    margin-left: -5px;
+    margin-top: -5px;
+    background-color: #FFF;
+}
+
+.cursor-info {
+    position: absolute;
+    background-color: #00000080;
+    border: 1px solid #000;
+    color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);;
+    padding: 2px;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 20px;
+    z-index: 1;
+    display: none;
+}
+
+select,
+input[type=number],
+input[type=text] {
+    color: var(--luna-dropdown-foregroundColor, --vscode-dropdown-foreground, initial);
+    background-color: var(--luna-dropdown-backgroundColor, --vscode-dropdown-background, initial);
+    border-color: var(--luna-dropdown-borderColor, --vscode-dropdown-border, none);
+}
+
+input[type=number],
+input[type=text] {
+    border: 0;
+}
+
+.drop-target {
+    background: var(--luna-list-dropBackgroundColor);
+}
+
+/*
+ * Force views to be absolute when base.css is loaded, since view.css is loaded at a later time, not
+ * doing this here can mean the canvas is laid out with the wrong dimensions since the gui restricts
+ * its position.
+ */
+.view {
+    position: absolute;
+}

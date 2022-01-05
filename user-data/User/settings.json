@@ -32,7 +32,7 @@
     "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltcIkZGMzM5OVwiLFwiRkYwMDAwXCIsXCJGRkZGRkZcIl0sXCJmb3JtYXRXaWR0aFwiOjI0MCxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwicGFnZUZvcm1hdFwiOntcInhcIjowLFwieVwiOjAsXCJ3aWR0aFwiOjgyNyxcImhlaWdodFwiOjExNjl9LFwic2VhcmNoXCI6dHJ1ZSxcInNob3dTdGFydFNjcmVlblwiOnRydWUsXCJncmlkQ29sb3JcIjpcIiNkMGQwZDBcIixcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImF1dG9zYXZlXCI6dHJ1ZSxcInJlc2l6ZUltYWdlc1wiOm51bGwsXCJvcGVuQ291bnRlclwiOjAsXCJ2ZXJzaW9uXCI6MTgsXCJ1bml0XCI6MSxcImlzUnVsZXJPblwiOmZhbHNlLFwidWlcIjpcIlwifSJ9",
     "workbench.editorAssociations": {
         "*.png": "luna.editor",
-        "*.ipynb": "jupyter.notebook.ipynb"
+        "*.ipynb": "jupyter-notebook"
     },
     "markdown-preview-enhanced.protocolsWhiteList": "http://, https://, atom://, file://, mailto:, tel:, zotero://",
     "plantuml.render": "Local",
@@ -42,4 +42,13 @@
         "comments": true,
         "strings": true
     },
+    "markdown-preview-enhanced.previewTheme": "github-light.css",
+    "pasteImage.path": "${currentFileDir}/images",
+    "pasteImage.showFilePathConfirmInputBox": true,
+    "kite.showWelcomeNotificationOnStartup": false,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "markdown-preview-enhanced.enableExtendedTableSyntax": true,
 }
