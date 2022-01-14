@@ -52,7 +52,7 @@
 	},
 	"dependencies": {
 		"@types/mathjs": "0.0.37",
-		"mathjs": "3.17.0"
+		"mathjs": "7.5.1"
 	},
 	"__metadata": {
 		"id": "ba77bee9-98dc-4b5f-ae4a-9701d1dab0f8",
